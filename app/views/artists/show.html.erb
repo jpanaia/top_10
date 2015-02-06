@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="well">
+			<h1><%= @artist.name %></h1>
+
+
+			<!--<h2>Genre:</h2>
+			<%#= @artist.genre %>
+			<p>
+			  <strong>Hometown:</strong>
+			  <%#= @artist.hometown %>
+			</p>
+			<p>
+			  <strong>Seen live:</strong>
+			  <%#= @artist.seen_live %>
+			</p>-->
+
+			<% if !@artist.songs.empty? %>
+				<% @artist.songs.each do |song| %>
+				  <h3><%= link_to song.name, song_path %></a></h3>
+				<% end %>
+			<% end %>
+			<h4><%= link_to edit_artist_path(@artist) do %>
+            <span class="fa fa-pencil-square-o"></span>
+          <% end %>
+		</div>
+	</div>
+</div>
+
+<%#= link_to 'Edit', edit_artist_path(@artist) %> 
+<%#= link_to 'Back', artists_path %>

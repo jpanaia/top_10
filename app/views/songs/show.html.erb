@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-12">
+		<div class="well">
+			<h2><%= @song.name %></h2>
+			<h3>by <%= @song.artist.name %></h3>
+
+			<!--<h4><%#= @song.rank %> </h4>-->
+			<%= imdb_style_rating_for @song, current_user %>
+			 <% if current_user %>
+			     <h4>Rate this song!</h4>
+			     <%= rating_for @song %>
+			    <% end %>
+
+			<h4><%= link_to edit_song_path(@song) do %>
+              <span class="fa fa-pencil-square-o"></span>
+          <% end %></h4>
+		</div>
+	</div>
+</div>
+
+<%#= link_to 'Edit', edit_song_path(@song) %> 
+<%#= link_to 'Back', songs_path %>

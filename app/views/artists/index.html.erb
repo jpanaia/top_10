@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Top Artists</h1>
+<p><%= link_to new_artist_path do %>
+  <span class="fa fa-plus"></span> Add
+  <% end %>
+</p>
+
+<% @artists.each_slice(3) do |artists| %>
+  <div class="row">
+    <% artists.each do |artist| %>
+      <div class="col-md-4">
+        <div class="well">
+          <h2><%= link_to artist.name, artist %></h2>
+          <h3><%= artist.genre %></h3>
+          <h4><%= artist.hometown %></h4>
+          <h4>
+          <% if artist.seen_live %>
+              <span class="label label-success">Seen 'em</span>
+            <% else %>
+              <span class="label label-info">Need to see 'em</span>
+            <% end %>
+          </h4>
+           <hr style="margin-bottom:0"/>
+          <h4 style="padding:0;margin-bottom:0"><%= link_to edit_artist_path(artist) do %>
+            <span class="fa fa-pencil-square-o"></span>
+          <% end %>
+          
+          <%= link_to artist, method: :delete, data: { confirm: 'Are you sure?' } do %>
+             <span class="fa fa-trash-o"></span>
+          <% end %>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<!--  <div class="row">
+  <%# @artists.each do |artist| %>
+    <div class="col-md-4">
+      
+    </div> 
+  <%# end %>
+</div> -->

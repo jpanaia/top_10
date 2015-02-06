@@ -1,0 +1,24 @@
+<!-- <h1 class="cover-heading">Cover your page.</h1>
+<p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+<p class="lead">
+  <a href="#" class="btn btn-lg btn-default">Learn more</a>
+</p>
+ -->
+
+ <% @songs.each do |song| %>
+	<div class="row">
+	  <div class="col-md-12">
+	  	<div class="well well-lg">
+		  <h2><span class="label label-info"><%= song.rank %></span> <%= song.name %></h2>
+		  <h3>by <%= song.artist.name %> </h3>
+			<i class="fa fa-twitter"></i>
+		  <% if song.artist.seen_live %>
+
+		    <p><i class="fa fa-music"></i> You've seen them live!</p>
+		    <% else %>
+		    <p><i class="fa fa-microphone"></i> <a href="#">On tour?</a></p>
+		  <% end %>
+		</div>
+	  </div>
+    </div>
+<% end %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Top Songs</h1>
+<p><%= link_to new_song_path do %>
+  <span class="fa fa-plus"></span> Add
+  <% end %>
+</p>
+
+<% @songs.each_slice(3) do |songs| %>
+  <div class="row">
+    <% songs.each do |song| %>
+      <div class="col-md-4">
+        <div class="well">
+          <!-- <h3 style="margin-top:0"><span class="label label-info">
+            <%# if song.rank != nil %>
+              <%#= song.rank %>
+            <%# else %>
+              No rank
+            <%# end %>
+            </span> 
+          </h3> -->
+          <h2><%= link_to song.name, song %></h2>
+          <%= imdb_style_rating_for song, current_user %>
+          <h3>by <%= song.artist.name %></h3>
+          <p><%= song.album %></p>
+          <hr style="margin-bottom:0"/>
+          <h4 style="padding:0;margin-bottom:0"><%= link_to edit_song_path(song) do %>
+            <span class="fa fa-pencil-square-o"></span>
+          <% end %>
+          
+          <%= link_to song, method: :delete, data: { confirm: 'Are you sure?' } do %>
+             <span class="fa fa-trash-o"></span>
+          <% end %>
+          </h4>
+        
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
