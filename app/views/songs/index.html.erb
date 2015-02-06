@@ -5,12 +5,23 @@
   <span class="fa fa-plus"></span> Add
   <% end %>
 </p>
+<!-- 
+<h2>Your top ratings</h2>
+<%# @rates.each do |rate| %>
+  <%# if current_user == rate.rater %>
+     <h1><%#= rate.rater.email %></h1>
 
-<% @songs.each_slice(3) do |songs| %>
+    <h2><%#= rate.rateable.name %></h2>
+    <h2><%#= rate.stars %></h2>
+ <%# end %>
+<%# end %> -->
+
+<% @songs.each_slice(2) do |songs| %>
   <div class="row">
     <% songs.each do |song| %>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="well">
+         
           <!-- <h3 style="margin-top:0"><span class="label label-info">
             <%# if song.rank != nil %>
               <%#= song.rank %>
@@ -19,10 +30,17 @@
             <%# end %>
             </span> 
           </h3> -->
-          <h2><%= link_to song.name, song %></h2>
-          <%= imdb_style_rating_for song, current_user %>
+          <h2><%#= link_to song.name, song %>
+            <%= song.name %></h2>
+          <!-- <h3>Your rating</h3> -->
+            <%#= rating_for song, "song" %>
           <h3>by <%= song.artist.name %></h3>
-          <p><%= song.album %></p>
+          <p>
+            <% "#{song.rank}".to_i.times do |rank| %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+          </p>
+          <!-- <p><%#= song.album %></p> -->
           <hr style="margin-bottom:0"/>
           <h4 style="padding:0;margin-bottom:0"><%= link_to edit_song_path(song) do %>
             <span class="fa fa-pencil-square-o"></span>
